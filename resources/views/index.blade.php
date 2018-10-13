@@ -10,9 +10,10 @@
 
                 <div class="row">
                     <div class="col-lg-10">
-                        <label for="result">Appreciation: </label>
-                        <input type="text" class="form-control" id="target" name="result">
-
+                        <input type="text" class="form-control mx-2" id="target" name="result" placeholder="Vos choix apparaîtront ici...">
+                    </div>
+                    <div class="col-lg-2">
+                        <label for=""></label>
                         <button class="btn btn-success tocopy" data-clipboard-target="#target">
                             <i class="fas fa-paste"></i>
                         </button>
