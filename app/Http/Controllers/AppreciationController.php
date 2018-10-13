@@ -17,23 +17,6 @@ class AppreciationController extends Controller
     {
         return Appreciation::all();
     }
-
-    /**
-     * Store new appreciation [No need right now]
-     *
-     * @param Request $request
-     * @return Appreciation $appreciation
-     */
-    /* public function store(Request $request)
-    {
-        $appreciation = Appreciation::create([
-            'content' => $request->content,
-            'level' => $request->level,
-            'category_id' => $request->category_id,
-        ]);
-
-        return $appreciation;
-    } */
         
     /**
      * Store base appreciations in the database
@@ -78,61 +61,6 @@ class AppreciationController extends Controller
         {
             $appreciation = Appreciation::findOrFail($id);
             return $appreciation;
-        } 
-        catch(\Exception $e) 
-        {
-            return response()->json([
-                'message' => 'error',
-                'description' => 'Not found...'
-            ], 404);
-        }
-    }
-    
-    /**
-     * Update specific appreciation
-     *
-     * @param int $id
-     * @param Request $request
-     * @return Appreciation $appreciation
-     */
-    public function update($id, Request $request)
-    {
-        try
-        {
-            $appreciation = Appreciation::findOrFail($id);
-
-            $appreciation->content = $request->content;
-            $appreciation->level = $request->level;
-            $appreciation->category_id = $request->category_id;
-            $appreciation->save();
-            
-            return $appreciation;
-        } 
-        catch(\Exception $e) 
-        {
-            return response()->json([
-                'message' => 'error',
-                'description' => 'Not found...'
-            ], 404);
-        }
-    }
-
-    /**
-     * Delete specific appreciation
-     *
-     * @param int $id
-     * @return string
-     */
-    public function destroy($id)
-    {
-        try
-        {
-            $appreciation = Appreciation::findOrFail($id);
-            $appreciation->delete();
-
-            return response()->json([
-                'message' => 'success'
-            ]);
         } 
         catch(\Exception $e) 
         {
