@@ -16,6 +16,6 @@ $factory->define(App\Appreciation::class, function (Faker\Generator $faker) {
     return [
         'content' => $faker->sentence(6),
         'level' => $levels[rand(0,2)],
-        'category_id' => rand(1,5),
+        'category_id' => rand(1,4),
     ];
 });

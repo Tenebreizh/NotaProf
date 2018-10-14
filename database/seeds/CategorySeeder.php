@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Category;
-use Faker\Generator as Faker;
 
 class CategorySeeder extends Seeder
 {
@@ -11,8 +9,8 @@ class CategorySeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        factory('App\Category',5)->create();
+        factory('App\Category',4)->create();
     }
 }

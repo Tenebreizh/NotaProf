@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
 
         // Create fake appreciations
         $this->call('AppreciationSeeder');
+
+        // Create fake sentences
+        $this->call('SentenceSeeder');
     }
 }

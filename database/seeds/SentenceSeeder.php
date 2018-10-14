@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AppreciationSeeder extends Seeder
+class SentenceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class AppreciationSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Appreciation',12)->create();
+        factory('App\Sentence',10)->create();
     }
 }
