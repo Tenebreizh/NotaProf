@@ -19,3 +19,7 @@ $("#comportement").click(function () {
 $("#conseils").click(function () {
     updateField($(this).find(':selected').val() + ", ");
 }).trigger("change");
+
+$("#sentences").click(function () {
+    updateField($(this).find(':selected').val());
+}).trigger("change");

@@ -14,6 +14,10 @@
 
                 <div class="box-body">
                     @include('appreciations')
+
+                    <hr />
+
+                    @include('sentences')
     
                     <br />
     
