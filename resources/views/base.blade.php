@@ -28,6 +28,7 @@
             </section>
             
             <section class="content">
+                @include('flash::message')
                 @yield('content')
             </section>
         </div>
@@ -45,6 +46,9 @@
         new ClipboardJS('.tocopy');
         </script>
     <script src=" {{ asset('js/main.js') }} "></script>
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).slideUp(350);
+    </script>
 </body>
 
 </html>
