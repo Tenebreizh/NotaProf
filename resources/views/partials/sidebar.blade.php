@@ -9,6 +9,13 @@
                     <span> Home </span>
                 </a>
             </li>
+
+            <li>
+                <a href=" {{ route('sentences.index') }} ">
+                    <i class="fa fa-pen-nib"></i>
+                    <span> Créer des phrases </span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
