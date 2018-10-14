@@ -1,7 +1,8 @@
 <header class="main-header">
     <a href=" {{ route('home') }} " class="logo">
-        <span class="logo-mini"><b>N</b>tp</span>
+        <img class="logo-mini" src="{{ asset('img/notaprof.png') }}" alt="Ntp" width="50" height="50" />
         <span class="logo-lg"><b>Nota</b>Prof</span>
+        
     </a>
     <nav class="navbar navbar-static-top">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
