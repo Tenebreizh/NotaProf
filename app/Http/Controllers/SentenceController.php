@@ -69,7 +69,7 @@ class SentenceController extends Controller
      */
     public function edit(Sentence $sentence)
     {
-        //
+        return view('sentences.edit')->with('categories', Category::all())->with('sentence', $sentence);
     }
 
     /**
@@ -81,7 +81,18 @@ class SentenceController extends Controller
      */
     public function update(Request $request, Sentence $sentence)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'content' => 'required'
+        ]);
+
+        $sentence->name = $request->name;
+        $sentence->content = $request->content;
+        $sentence->save();
+
+        flash('Votre phrase à été mise à jour !')->success();
+        return redirect()->route('sentences.index');
+
     }
 
     /**
