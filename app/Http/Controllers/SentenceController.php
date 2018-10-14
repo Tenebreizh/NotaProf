@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Sentence;
+use App\Category;
 use Illuminate\Http\Request;
 
 class SentenceController extends Controller
@@ -14,7 +15,7 @@ class SentenceController extends Controller
      */
     public function index()
     {
-        //
+        return view('sentences.index')->with('categories', Category::all());
     }
 
     /**
