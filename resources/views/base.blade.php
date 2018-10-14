@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href=" {{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }} ">
     <link rel="stylesheet" href=" {{ asset('bower_components/font-awesome/css/font-awesome.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" href=" {{ asset('dist/css/AdminLTE.min.css') }} ">
     <link rel="stylesheet" href=" {{ asset('dist/css/skins/skin-blue.min.css') }} ">
     <link rel="stylesheet" href=" {{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} ">
@@ -37,6 +38,8 @@
     <script src=" {{ asset('bower_components/jquery/dist/jquery.min.js') }} "></script>
     <script src=" {{ asset('bower_components/jquery-ui/jquery-ui.min.js') }} "></script>
     <script src=" {{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }} "></script>
+    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script src=" {{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }} "></script>
     <script src=" {{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }} "></script>
     <script src=" {{ asset('bower_components/fastclick/lib/fastclick.js') }} "></script>
@@ -48,6 +51,18 @@
     <script src=" {{ asset('js/main.js') }} "></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).slideUp(350);
+    </script>
+    <script>
+        $('#sentences').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : false,
+            'autoWidth'   : true,
+            "columnDefs": [ { "orderable": false, "targets": -1 } ]
+            })
+    
     </script>
 </body>
 

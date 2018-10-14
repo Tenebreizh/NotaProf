@@ -9,34 +9,47 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Créer votre phrase personnalisé</h3>
+                    <h3 class="box-title">Vos phrases personnalisé</h3>
+                    <a href=" {{ route('sentences.create') }} " class="btn btn-success">
+                        <i class="fa fa-plus"></i> Créer une phrase
+                    </a>
                 </div>
                 <div class="box-body">
-                    @include('appreciations')
-    
-                    <br />
-    
-                    <form action="{{ route('sentences.store') }}" method="POST">
-                        @csrf
-                        <legend>Créez votre phrase</legend>
-                        
-                        <div class="form-group col-lg-2">
-                            <label for="name"> Nom: </label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Ecrire ici..." required>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-striped table-hover" id="sentences">
+                                <thead>
+                                    <th>Nom</th>
+                                    <th>Phrase</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($sentences as $sentence)
+                                        <tr>
+                                            <td> {{ $sentence->name }} </td>
+                                            <td> {{ $sentence->content }} </td>
+                                            <td class="text-center">
+                                                <form action="{{ route('sentences.destroy', ['id' => $sentence->id]) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    {{-- Go to edit page --}}
+                                                    <a href=" {{ route('sentences.edit', ['id' => $sentence->id]) }} " class="btn btn-success">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+                                                    {{-- Submit button for delete --}}
+                                                    <button class="btn btn-danger"> 
+                                                        <i class="fa fa-trash-alt"></i>    
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        
-                        <div class="form-group col-lg-11">
-                            <label for="target"> Phrase: </label>
-                            <input type="text" name="content" id="target" class="form-control" placeholder="Ecrire ici..." required>
-                        </div>
-                        
-                        <div class="form-group col-lg-2">
-                            <button type="submit" class="btn btn-success">
-                                <i class="fa fa-check"></i>
-                                Enregistrer
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
