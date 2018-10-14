@@ -23,7 +23,7 @@
             <section class="content-header">
                 <h1>
                     Notaprof
-                    <small>Home</small>
+                    <small> @yield('name') </small>
                 </h1>
             </section>
             

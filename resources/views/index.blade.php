@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('name')
+    Home
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -14,7 +18,7 @@
                     </div>
                     <div class="col-lg-2">
                         <label for=""></label>
-                        <button class="btn btn-success tocopy" data-clipboard-target="#target">
+                        <button class="btn btn-success tocopy" data-clipboard-target="#target" title="Copier">
                             <i class="fas fa-paste"></i>
                         </button>
                     </div>
