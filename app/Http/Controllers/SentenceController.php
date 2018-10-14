@@ -36,7 +36,12 @@ class SentenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sentence = Sentence::create([
+            'name' => $request->name,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
