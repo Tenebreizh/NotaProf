@@ -46,8 +46,8 @@ class SentenceController extends Controller
             'content' => $request->content,
         ]);
 
-        flash('Votre phrase a été créée avec succès')->success();
-        return redirect()->back();
+        flash('Votre phrase a été créée avec succès !')->success();
+        return redirect()->route('sentences.index');
     }
 
     /**
@@ -92,6 +92,9 @@ class SentenceController extends Controller
      */
     public function destroy(Sentence $sentence)
     {
-        //
+        $sentence->delete();
+
+        flash('La phrase a été supprimé avec succès !')->success();
+        return redirect()->back();
     }
 }
