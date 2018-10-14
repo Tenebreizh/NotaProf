@@ -36,11 +36,17 @@ class SentenceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'content' => 'required'
+        ]);
+
         $sentence = Sentence::create([
             'name' => $request->name,
             'content' => $request->content,
         ]);
 
+        flash('Votre phrase a été créée avec succès')->success();
         return redirect()->back();
     }
 

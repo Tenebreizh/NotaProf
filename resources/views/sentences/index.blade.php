@@ -22,12 +22,12 @@
                         
                         <div class="form-group col-lg-2">
                             <label for="name"> Nom: </label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Ecrire ici...">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Ecrire ici..." required>
                         </div>
                         
                         <div class="form-group col-lg-11">
                             <label for="target"> Phrase: </label>
-                            <input type="text" name="content" id="target" class="form-control" placeholder="Ecrire ici...">
+                            <input type="text" name="content" id="target" class="form-control" placeholder="Ecrire ici..." required>
                         </div>
                         
                         <div class="form-group col-lg-2">
