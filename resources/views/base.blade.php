@@ -52,18 +52,8 @@
     <script>
         $('div.alert').not('.alert-important').delay(3000).slideUp(350);
     </script>
-    <script>
-        $('#sentences').DataTable({
-            'paging'      : true,
-            'lengthChange': true,
-            'searching'   : true,
-            'ordering'    : true,
-            'info'        : false,
-            'autoWidth'   : true,
-            "columnDefs": [ { "orderable": false, "targets": -1 } ]
-            })
     
-    </script>
+    @yield('script')   
 </body>
 
 </html>
