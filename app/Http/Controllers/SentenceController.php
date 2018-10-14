@@ -15,7 +15,7 @@ class SentenceController extends Controller
      */
     public function index()
     {
-        return view('sentences.index')->with('categories', Category::all());
+        return view('sentences.index')->with('sentences', Sentence::all());
     }
 
     /**
@@ -25,7 +25,7 @@ class SentenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('sentences.create')->with('categories', Category::all());
     }
 
     /**
