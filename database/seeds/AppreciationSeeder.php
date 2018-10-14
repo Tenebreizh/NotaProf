@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Appreciation;
-use Faker\Generator as Faker;
 
 class AppreciationSeeder extends Seeder
 {
@@ -11,7 +9,7 @@ class AppreciationSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
         factory('App\Appreciation',12)->create();
     }
