@@ -2,7 +2,7 @@
 
 return [
 
-    'version' => '1.1',
+    'version' => '1.2',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \Ecrmnn\LaravelHttps\Providers\ServiceProvider::class,
 
         /*
          * Package Service Providers...
