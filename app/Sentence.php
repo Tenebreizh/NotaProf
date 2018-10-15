@@ -14,4 +14,9 @@ class Sentence extends Model
     protected $fillable = [
         'name','content', 'user_id',
     ];
+
+    public function user()
+    {
+        $this->belongsTo('App\User');
+    }
 }
