@@ -13,16 +13,16 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="#" class="user-image">
-                        <span class="hidden-xs">John Doe</span>
+                        <img src="{{ Auth::user()->avatar }}" class="user-image">
+                        <span class="hidden-xs"> {{ Auth::user()->name }} </span>
                     </a>
 
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="#" class="img-circle" alt="User">
+                            <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="User">
                             <p>
-                                John Doe
-                                <small>Depuis 01/01/1900</small>
+                                {{ Auth::user()->name }}
+                                <small>Depuis le {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('d/m/Y') }}</small>
                             </p>
                         </li>
                         <li class="user-body">
