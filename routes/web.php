@@ -11,6 +11,10 @@
 |
 */
 
+Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('/sentences', 'SentenceController');
+Route::middleware(['auth'])->group(function() {
+    Route::resource('/sentences', 'SentenceController');
+});
+

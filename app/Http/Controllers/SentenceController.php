@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sentence;
 use App\Category;
 use Illuminate\Http\Request;
+use Auth;
 
 class SentenceController extends Controller
 {
@@ -44,6 +45,7 @@ class SentenceController extends Controller
         $sentence = Sentence::create([
             'name' => $request->name,
             'content' => $request->content,
+            'user_id' => Auth::id(),
         ]);
 
         flash('Votre phrase a été créée avec succès !')->success();
