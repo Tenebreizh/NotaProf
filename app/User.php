@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function sentences()
     {
-        $this->hasMany('App\Sentence');
+        return $this->hasMany('App\Sentence');
     }
 }
