@@ -13,13 +13,21 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ Auth::user()->avatar }}" class="user-image">
+                        @if (!Auth::user()->avatar)
+                            <img src="{{ asset('img/default-avatar.png') }}" class="user-image">
+                        @else
+                            <img src="{{ Auth::user()->avatar }}" class="user-image">
+                        @endif
                         <span class="hidden-xs"> {{ Auth::user()->name }} </span>
                     </a>
 
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="User">
+                            @if (!Auth::user()->avatar)
+                                <img src="{{ asset('img/default-avatar.png') }}" class="img-circle">
+                            @else
+                                <img src="{{ Auth::user()->avatar }}" class="img-circle">
+                            @endif
                             <p>
                                 {{ Auth::user()->name }}
                                 <small>Depuis le {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('d/m/Y') }}</small>
