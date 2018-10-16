@@ -21,7 +21,5 @@ Route::middleware(['auth'])->group(function() {
     Route::put('/parameters', 'ParameterController@update')->name('parameters.update');
 });
 
-Route::fallback(function () {
-    return redirect()->route('home');
-});
+Route::fallback('HomeController@index')->name('fallback');
 

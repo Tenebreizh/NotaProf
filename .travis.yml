@@ -20,6 +20,13 @@ before_script:
 script:
     - php artisan migrate
     - php artisan appreciation:store
+    - php artisan storage:link
+    - php artisan config:clear
+    - php artisan config:cache
+    - php artisan route:clear
+    - php artisan route:cache
+    - php artisan view:clear
+    - php artisan view:cache
     - vendor/bin/phpunit
 
 notifications:
