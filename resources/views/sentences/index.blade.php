@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Vos phrases personnalisé</h3>
+                    <h3 class="box-title">Vos phrases personnalisées</h3>
                     <a href=" {{ route('sentences.create') }} " class="btn btn-success">
                         <i class="fa fa-plus"></i> Créer une phrase
                     </a>
