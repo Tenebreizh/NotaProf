@@ -29,26 +29,26 @@
                 @csrf
 
                 {{-- Email --}}
-                <div class="form-group has-feedback">
-                    <input type="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                     @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
+                        <span class="help-block" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span> 
                     @endif
                 </div>
 
                 {{-- Password --}}
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Mot de passe" required>
+                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
                     @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
+                        <span class="help-block" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
-                        </span>
+                        </span> 
                     @endif
                 </div>
 
