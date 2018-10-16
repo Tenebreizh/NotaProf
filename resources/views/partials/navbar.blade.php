@@ -39,7 +39,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Paramètres</a>
+                                <a href=" {{ route('parameters') }} " class="btn btn-default btn-flat">Paramètres</a>
                             </div>
                         </li>
                     </ul>
