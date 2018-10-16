@@ -16,7 +16,7 @@ class SentenceController extends Controller
      */
     public function index()
     {
-        return view('sentences.index')->with('sentences', Sentence::all());
+        return view('sentences.index')->with('sentences', Auth::user()->sentences);
     }
 
     /**
