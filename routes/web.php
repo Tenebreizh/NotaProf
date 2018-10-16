@@ -18,3 +18,7 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('/sentences', 'SentenceController');
 });
 
+Route::fallback(function () {
+    return redirect()->route('home');
+});
+
