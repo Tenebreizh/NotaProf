@@ -13,7 +13,7 @@ class AddAdminFieldUsers extends Migration
      */
     public function up()
     {
-        Schema::table('sentences', function (Blueprint $table)
+        Schema::table('users', function (Blueprint $table)
         {
             $table->boolean('admin')->default(false);
         });
