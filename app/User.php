@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Support\Facades\DB;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'avatar', 'email', 'password',
+        'name', 'avatar', 'email', 'password', 'admin',
     ];
 
     /**
@@ -31,5 +33,14 @@ class User extends Authenticatable
     public function sentences()
     {
         return $this->hasMany('App\Sentence');
+    }
+
+    public static function admin_exist()
+    {
+        if (DB::table('users')->where('admin', 1)->exists()) 
+        {
+            return true;
+        }
+        return false;
     }
 }
