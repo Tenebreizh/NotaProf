@@ -10,10 +10,6 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Utilisateurs</h3>
-                    {{-- <a href=" {{ route('sentences.create') }} " class="btn btn-success">
-                        <i class="fa fa-plus"></i> Ajouter un utilisateur
-                    </a> --}}
-
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
                         <i class="fa fa-plus"></i> Ajouter un utilisateur
                     </button>
@@ -38,9 +34,9 @@
                                                     @method('DELETE')
 
                                                     {{-- Go to edit page --}}
-                                                    <a href=" {{ route('users.edit', ['id' => $user->id]) }} " class="btn btn-success">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $user->id }}">
                                                         <i class="fa fa-edit"></i>
-                                                    </a>
+                                                    </button>
 
                                                     {{-- Submit button for delete --}}
                                                     <button class="btn btn-danger"> 
@@ -60,6 +56,7 @@
     </div>
 
     @include('users.create')
+    @include('users.edit')
 @endsection
 
 @section('script')
