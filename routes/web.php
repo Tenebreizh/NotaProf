@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/parameters', 'ParameterController@index')->name('parameters');
     Route::put('/parameters', 'ParameterController@update')->name('parameters.update');
+    Route::put('/parameters/password', 'ParameterController@updatePassword')->name('parameters.password');
 });
 
 Route::fallback('HomeController@index')->name('fallback');
