@@ -32,7 +32,7 @@ class AdminController extends Controller
             'admin' => 1,
         ]);
 
-        flash("L'administrateur a bien été créé")->success();
+        flash("L'administrateur a été créé avec succès")->success();
         return redirect()->back();
     }
 
@@ -43,9 +43,13 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $admin)
     {
-        //
+        $admin->name = $request->name;
+        $admin->save();
+
+        flash("L'administrateur a été modifié avec succès !")->success();
+        return redirect()->back();
     }
 
     /**
