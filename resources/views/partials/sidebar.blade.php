@@ -28,8 +28,15 @@
 
                 <li>
                     <a href=" {{ route('users.index') }} ">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-users"></i>
                         <span> Utilisateurs </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href=" {{ route('admins.index') }} ">
+                        <i class="fas fa-user-shield"></i>
+                        <span> Administrateurs </span>
                     </a>
                 </li>
             @endif

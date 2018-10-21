@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function() {
     Route::resource('/sentences', 'SentenceController');
     Route::resource('/users', 'UserController');
+    Route::resource('/admins', 'AdminController');
 
     Route::get('/parameters', 'ParameterController@index')->name('parameters');
     Route::put('/parameters', 'ParameterController@update')->name('parameters.update');
