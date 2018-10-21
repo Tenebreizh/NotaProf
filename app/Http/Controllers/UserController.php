@@ -26,13 +26,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $password = $this->random_password();
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($this->random_password()),
+            'password' => bcrypt($password),
         ]);
 
-        flash("L'utilisateur a été créé avec succès !")->success();
+        flash("L'utilisateur a été créé avec succès ! Mot de passe temporaire: <b>". $password ."</b>")->success()->important();
         return redirect()->route('users.index');
     }
 
