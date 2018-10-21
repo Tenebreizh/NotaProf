@@ -25,7 +25,15 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($this->random_password()),
+            'admin' => 1,
+        ]);
+
+        flash("L'administrateur a bien été créé")->success();
+        return redirect()->back();
     }
 
     /**
