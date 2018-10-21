@@ -69,7 +69,9 @@
             </form>
 
             {{-- <a href="{{ route('password.request') }}"> J'ai oublié mon mot de passe</a><br> --}}
-            <a href=" {{ route('register') }} " class="text-center"> S'enregistrer </a>
+            @if (!App\User::admin_exist())
+                <a href=" {{ route('register') }} " class="text-center"> S'enregistrer </a>
+            @endif
 
         </div>
     </div>
