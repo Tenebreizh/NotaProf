@@ -1,9 +1,14 @@
 language: php
+sudo: required
+dist: trusty
 
 php:
     - 7.1
     - 7.2
     - 7.3
+
+addons:
+  chrome: stable
 
 services:
     - mysql
@@ -11,11 +16,16 @@ services:
 cache:
     directories:
         - $HOME/.composer/cache
+install:
+    - mysql -e 'CREATE DATABASE homestead;'
+    - travis_retry composer install --no-progress --no-interaction --prefer-dist --no-suggest
+    - cp .env.travis .env
+    - php artisan key:generate
+
 
 before_script:
-    - composer install --no-progress --no-interaction --prefer-dist --no-suggest
-    - mysql -e 'CREATE DATABASE homestead;'
-    - cp .env.travis .env
+    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+    - php artisan serve &
 
 script:
     - php artisan migrate:fresh --seed
@@ -25,6 +35,7 @@ script:
     - php artisan route:cache
     - php artisan view:cache
     - vendor/bin/phpunit
+    - php artisan dusk
 
 notifications:
     email: false
