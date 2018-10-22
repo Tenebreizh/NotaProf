@@ -22,7 +22,7 @@ before_script:
     - mysql -e 'CREATE DATABASE homestead;'
     - cp .env.travis .env
     - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-    - php artisan serve &
+    - php artisan serve
 
 script:
     - php artisan migrate:fresh --seed
