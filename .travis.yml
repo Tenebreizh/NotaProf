@@ -16,18 +16,20 @@ services:
 cache:
     directories:
         - $HOME/.composer/cache
-
-before_script:
+install:
+    - cp .env.travis .env
     - composer install --no-progress --no-interaction --prefer-dist --no-suggest
     - mysql -e 'CREATE DATABASE homestead;'
-    - cp .env.travis .env
-    - php artisan optimize:clear #clear all caches
+    - php artisan key:generate
+
+before_script:
     - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-    - php artisan serve
+    - php artisan serve &
 
 script:
     - php artisan migrate:fresh --seed
     - php artisan storage:link
+    - php artisan optimize:clear #clear all caches
     - php artisan config:cache
     - php artisan route:cache
     - php artisan view:cache
