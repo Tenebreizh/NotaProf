@@ -11,6 +11,18 @@
 |
 */
 
+Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('/sentences', 'SentenceController');
+Route::middleware(['auth'])->group(function() {
+    Route::resource('/sentences', 'SentenceController');
+    Route::resource('/users', 'UserController');
+    Route::resource('/admins', 'AdminController');
+
+    Route::get('/parameters', 'ParameterController@index')->name('parameters');
+    Route::put('/parameters', 'ParameterController@update')->name('parameters.update');
+    Route::put('/parameters/password', 'ParameterController@updatePassword')->name('parameters.password');
+});
+
+Route::fallback('HomeController@index')->name('fallback');
+

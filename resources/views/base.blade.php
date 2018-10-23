@@ -11,6 +11,7 @@
     <link rel="stylesheet" href=" {{ asset('dist/css/AdminLTE.min.css') }} ">
     <link rel="stylesheet" href=" {{ asset('dist/css/skins/skin-blue.min.css') }} ">
     <link rel="stylesheet" href=" {{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} ">
+    <link rel="stylesheet" href=" {{ asset('plugins/iCheck/square/blue.css') }} ">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <title> {{ env('APP_NAME') }} </title>
 </head>

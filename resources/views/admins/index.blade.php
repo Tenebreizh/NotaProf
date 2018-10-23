@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('name')
-    Phrases
+    Administrateurs
 @endsection
 
 @section('content')
@@ -9,39 +9,41 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Vos phrases personnalisées</h3>
-                    <a href=" {{ route('sentences.create') }} " class="btn btn-success">
-                        <i class="fa fa-plus"></i> Créer une phrase
-                    </a>
+                    <h3 class="box-title">Administrateurs</h3>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
+                        <i class="fa fa-plus"></i> Ajouter un admin
+                    </button>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <table class="table table-striped table-hover" id="sentences">
+                            <table class="table table-striped table-hover" id="admins">
                                 <thead>
                                     <th>Nom</th>
-                                    <th>Phrase</th>
+                                    <th>Email</th>
                                     <th></th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($sentences as $sentence)
+                                    @foreach ($admins as $admin)
                                         <tr>
-                                            <td> {{ $sentence->name }} </td>
-                                            <td> {{ $sentence->content }} </td>
+                                            <td> {{ $admin->name }} </td>
+                                            <td> {{ $admin->email }} </td>
                                             <td class="text-center">
-                                                <form action="{{ route('sentences.destroy', ['id' => $sentence->id]) }}" method="post">
+                                                <form action="{{ route('admins.destroy', ['id' => $admin->id]) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     {{-- Go to edit page --}}
-                                                    <a href=" {{ route('sentences.edit', ['id' => $sentence->id]) }} " class="btn btn-success">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $admin->id }}">
                                                         <i class="fa fa-edit"></i>
-                                                    </a>
+                                                    </button>
 
                                                     {{-- Submit button for delete --}}
-                                                    <button class="btn btn-danger"> 
-                                                        <i class="fa fa-trash-alt"></i>    
-                                                    </button>
+                                                    @if (!$loop->first)
+                                                        <button class="btn btn-danger"> 
+                                                            <i class="fa fa-trash-alt"></i>    
+                                                        </button>
+                                                    @endif
                                                 </form>
                                             </td>
                                         </tr>
@@ -54,11 +56,14 @@
             </div>
         </div>
     </div>
+
+    @include('admins.create')
+    @include('admins.edit')
 @endsection
 
 @section('script')
     <script>
-        $('#sentences').DataTable({
+        $('#admins').DataTable({
             'paging'      : true,
             'lengthChange': true,
             'searching'   : true,

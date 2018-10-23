@@ -11,13 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Create fake user & admin
+        $this->call('UserSeeder');
+
         // Create fake categories
-        $this->call('CategorySeeder');
-
         // Create fake appreciations
-        $this->call('AppreciationSeeder');
-
+        Artisan::call('appreciation:store');
+        
         // Create fake sentences
         $this->call('SentenceSeeder');
+        
     }
 }

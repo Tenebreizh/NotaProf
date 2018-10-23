@@ -13,10 +13,12 @@ class SentenceTest extends TestCase
 
     public function testCreateSentence()
     {
+        $user = factory('App\User')->create();
+
         $sentence = Sentence::create([
             'name' => 'Bad sentence',
             'content' => 'Bla bla bla, then this is  the good content',
-            'user_id' => 1,
+            'user_id' => $user->id,
         ]);
 
         $this->assertDatabaseHas('sentences', [
