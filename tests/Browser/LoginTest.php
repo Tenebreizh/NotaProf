@@ -21,7 +21,7 @@ class LoginTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee(env('APP_NAME'));
+                    ->assertSee('Notaprof');
         });
     }
     
