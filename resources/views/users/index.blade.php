@@ -19,6 +19,7 @@
                         <div class="col-lg-12">
                             <table class="table table-striped table-hover" id="users">
                                 <thead>
+                                    <th>ID</th>
                                     <th>Nom</th>
                                     <th>Email</th>
                                     <th></th>
@@ -26,6 +27,7 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
+                                            <td> {{ $user->id }} </td>
                                             <td> {{ $user->name }} </td>
                                             <td> {{ $user->email }} </td>
                                             <td class="text-center">
