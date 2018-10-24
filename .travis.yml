@@ -30,10 +30,6 @@ before_script:
 script:
     - php artisan migrate:fresh --seed
     - php artisan storage:link
-    - php artisan optimize:clear
-    - php artisan config:cache
-    - php artisan route:cache
-    - php artisan view:cache
     # Tests
     - vendor/bin/phpunit
     - php artisan dusk
