@@ -20,7 +20,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         // Telescope::night();
 
         Telescope::filter(function (IncomingEntry $entry) {
-            if (env('APP_ENV')) {
+            if (env('APP_ENV') == 'local') {
                 return true;
             }
 
