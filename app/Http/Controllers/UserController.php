@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Notifications\NewAccount;
 
 class UserController extends Controller
 {
@@ -27,11 +28,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $password = $this->random_password();
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($password),
         ]);
+
+        // Send notification to the fresh new user
+        $user->notify(new NewAccount($user->email, $password));
 
         flash("L'utilisateur a été créé avec succès ! Mot de passe temporaire: <b>". $password ."</b>")->success()->important();
         return redirect()->route('users.index');

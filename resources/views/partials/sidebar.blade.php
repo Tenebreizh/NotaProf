@@ -39,6 +39,13 @@
                         <span> Administrateurs </span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="/telescope" target="_blank">
+                        <i class="fas fa-eye"></i>
+                        <span> Telescope </span>
+                    </a>
+                </li>
             @endif
         </ul>
     </section>

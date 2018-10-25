@@ -21,6 +21,7 @@ install:
     - composer install --no-progress --no-interaction --prefer-dist --no-suggest
     - mysql -e 'CREATE DATABASE homestead;'
     - php artisan key:generate
+    - php artisan telescope:install
 
 before_script:
     - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
@@ -29,10 +30,6 @@ before_script:
 script:
     - php artisan migrate:fresh --seed
     - php artisan storage:link
-    - php artisan optimize:clear
-    - php artisan config:cache
-    - php artisan route:cache
-    - php artisan view:cache
     # Tests
     - vendor/bin/phpunit
     - php artisan dusk

@@ -2,7 +2,7 @@
 
 return [
 
-    'version' => '2.1',
+    'version' => '2.2',
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +174,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
