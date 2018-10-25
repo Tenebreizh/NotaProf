@@ -37,7 +37,7 @@ class UserController extends Controller
         // Send notification to the fresh new user
         $user->notify(new NewAccount($user->email, $password));
 
-        flash("L'utilisateur a été créé avec succès ! Mot de passe temporaire: <b>". $password ."</b>")->success()->important();
+        flash("L'utilisateur a été créé avec succès !")->success();
         return redirect()->route('users.index');
     }
 
