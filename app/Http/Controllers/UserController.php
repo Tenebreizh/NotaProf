@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Notifications\NewAccount;
+use App\Http\Controllers\Other\GeneratePassword;
 
 class UserController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->generate_password = new GeneratePassword(8);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $password = $this->random_password();
+        $password = $this->generate_password->password();
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -37,7 +44,7 @@ class UserController extends Controller
         // Send notification to the fresh new user
         $user->notify(new NewAccount($user->email, $password));
 
-        flash("L'utilisateur a été créé avec succès ! Mot de passe temporaire: <b>". $password ."</b>")->success()->important();
+        flash("L'utilisateur a été créé avec succès !")->success();
         return redirect()->route('users.index');
     }
 
@@ -80,12 +87,5 @@ class UserController extends Controller
 
         flash("L'utilisateur a été supprimé avec succès !")->success();
         return redirect()->back();
-    }
-
-    private function random_password( $length = 8 ) 
-    {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
-        $password = substr( str_shuffle( $chars ), 0, $length );
-        return $password;
     }
 }
