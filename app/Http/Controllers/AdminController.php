@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Controllers\Other\GeneratePassword;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->generate_password = new GeneratePassword(8);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +31,10 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         User::create([
+
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($this->random_password()),
+            'password' => bcrypt($password),
             'admin' => 1,
         ]);
 
@@ -64,12 +70,5 @@ class AdminController extends Controller
 
         flash("L'administrateur a été supprimé avec succès !")->success();
         return redirect()->back();
-    }
-
-    private function random_password( $length = 8 ) 
-    {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
-        $password = substr( str_shuffle( $chars ), 0, $length );
-        return $password;
     }
 }
