@@ -1,7 +1,10 @@
 <header class="main-header">
     <a href=" {{ route('home') }} " class="logo">
-        <img class="logo-mini" src="{{ asset('img/notaprof.png') }}" alt="Ntp" width="50" height="50" />
-        <span class="logo-lg"><b>Nota</b>Prof</span>
+        <img class="logo-mini" src="{{ asset('img/notaprof.png') }}" alt="Notaprof" width="50" height="50" />
+        <span class="logo-lg">
+            <img src="{{ asset('img/notaprof.png') }}" alt="Ntp" width="40" height="40" />
+            {{ config('app.name') }}
+        </span>
         
     </a>
     <nav class="navbar navbar-static-top">
