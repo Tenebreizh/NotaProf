@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Notifications\NewAccount;
 use App\Http\Controllers\Other\GeneratePassword;
 
 class AdminController extends Controller
@@ -12,6 +13,7 @@ class AdminController extends Controller
     {
         $this->generate_password = new GeneratePassword(8);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,13 +32,17 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
+        $password = $this->generate_password->password();
 
+        $admin = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($password),
             'admin' => 1,
         ]);
+
+        // Send notification to the fresh new user
+        $admin->notify(new NewAccount($admin->email, $password));
 
         flash("L'administrateur a été créé avec succès")->success();
         return redirect()->back();
