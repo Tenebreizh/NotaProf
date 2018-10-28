@@ -13,13 +13,13 @@
     <link rel="stylesheet" href=" {{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }} ">
     <link rel="stylesheet" href=" {{ asset('plugins/iCheck/square/blue.css') }} ">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <title> {{ env('APP_NAME') }} </title>
+    <title> {{ config('app.name') }} </title>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper" id="app">
-    @include('partials.navbar')
-    @include('partials.sidebar')
+    @include('layouts.navbar')
+    @include('layouts.sidebar')
 
         <div class="content-wrapper">
             <section class="content-header">
@@ -34,7 +34,7 @@
                 @yield('content')
             </section>
         </div>
-    @include('partials.footer')
+    @include('layouts.footer')
     </div>
     <script src=" {{ asset('bower_components/jquery/dist/jquery.min.js') }} "></script>
     <script src=" {{ asset('bower_components/jquery-ui/jquery-ui.min.js') }} "></script>
