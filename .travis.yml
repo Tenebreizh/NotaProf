@@ -1,3 +1,7 @@
+env:
+    global:
+        - CC_TEST_REPORTER_ID=b9eca5b43eadedc80c34d4851a59ddaa2ea30de609a67f01f3f33d2f2584f1dc
+
 language: php
 sudo: required
 dist: trusty
@@ -24,15 +28,22 @@ install:
     - php artisan telescope:install
 
 before_script:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter before-build
     - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
     - php artisan serve &
 
 script:
+    - bundle exec rspec
     - php artisan migrate:fresh --seed
     - php artisan storage:link
     # Tests
     - vendor/bin/phpunit
     - php artisan dusk
+
+after_script:
+    - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
     email: false
