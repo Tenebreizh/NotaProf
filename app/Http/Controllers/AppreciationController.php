@@ -8,16 +8,7 @@ use App\Category;
 
 class AppreciationController extends Controller
 {
-    // /**
-    //  * Get all appreciations
-    //  *
-    //  * @return \App\Appreciation
-    //  */
-    // public function index()
-    // {
-    //     return Appreciation::all();
-    // }
-        
+      
     /**
      * Store base appreciations in the database
      *
@@ -48,26 +39,4 @@ class AppreciationController extends Controller
             }
         }
     }
-
-    // /**
-    //  * Get specific appreciation
-    //  *
-    //  * @param int $id
-    //  * @return \App\Appreciation $appreciation
-    //  */
-    // public function show($id)
-    // {
-    //     try
-    //     {
-    //         $appreciation = Appreciation::findOrFail($id);
-    //         return $appreciation;
-    //     } 
-    //     catch(\Exception $e) 
-    //     {
-    //         return response()->json([
-    //             'message' => 'error',
-    //             'description' => 'Not found...'
-    //         ], 404);
-    //     }
-    // }
 }

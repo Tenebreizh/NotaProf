@@ -11,6 +11,11 @@ class SentenceTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * Test the creation of a sentence
+     *
+     * @return void
+     */
     public function testCreateSentence()
     {
         $user = factory('App\User')->create();
@@ -27,6 +32,11 @@ class SentenceTest extends TestCase
         ]);
     }
 
+    /**
+     * Test the update of a sentence
+     *
+     * @return void
+     */
     public function testUpdateSentence()
     {
         $fake = factory('App\Sentence')->create();
@@ -42,6 +52,11 @@ class SentenceTest extends TestCase
         ]);
     }
 
+    /**
+     * Test the suppresion of a sentence
+     *
+     * @return void
+     */
     public function testDeleteSentence()
     {
         $fake = factory('App\Sentence')->create();
