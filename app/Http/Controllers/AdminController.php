@@ -9,15 +9,11 @@ use App\Http\Controllers\Other\GeneratePassword;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->generate_password = new GeneratePassword(8);
-    }
 
     /**
-     * Display a listing of the resource.
+     * Display all the admin
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -25,14 +21,14 @@ class AdminController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created admin
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $password = $this->generate_password->password();
+        $password = GeneratePassword::password(8);
 
         $admin = User::create([
             'name' => $request->name,
@@ -49,11 +45,11 @@ class AdminController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified admin
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Request $request
+     * @param  User    $admin
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, User $admin)
     {
@@ -65,10 +61,10 @@ class AdminController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified admin
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  User  $admin
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $admin)
     {

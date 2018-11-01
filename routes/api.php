@@ -16,13 +16,3 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
-// Appreciations routes
-Route::resource('appreciations', 'AppreciationController')->only(['index', 'show']);
-
-// Categories routes
-Route::resource('categories', 'CategoryController')->only(['index', 'show']);
-
-
-
-

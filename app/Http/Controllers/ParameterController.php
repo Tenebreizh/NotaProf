@@ -13,7 +13,7 @@ class ParameterController extends Controller
     /**
      * Return paramaters page of the current user
      *
-     * @return void
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -24,14 +24,13 @@ class ParameterController extends Controller
      * Update the user profile
      *
      * @param Request $request
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
         $request->validate([
             'avatar' => 'image|mimes:jpeg,bmp,png,gif',
             'name' => 'required|string|max:255',
-            // 'password' => 'required'
         ]);
 
         $user = Auth::user();
@@ -41,7 +40,6 @@ class ParameterController extends Controller
             $user->avatar = $this->userAvatar($user->avatar, $request->avatar);
         }
 
-        // $user->password = bcrypt($request->password);
         $user->save();
 
         flash('Votre compte à bien été mis à jour !')->success();
@@ -52,7 +50,7 @@ class ParameterController extends Controller
      * Update the user password
      *
      * @param Request $request
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function updatePassword(Request $request)
     {
@@ -84,13 +82,13 @@ class ParameterController extends Controller
     /**
      * Check if an avatar for this user already exist(Delete it if true) & upload the user avatar
      *
-     * @param User $userAvatar
-     * @param file $newAvatar
-     * @return void
+     * @param \App\User $userAvatar
+     * @param file      $newAvatar
+     * @return string   $path
      */
     private function userAvatar($userAvatar, $newAvatar)
     {
-        if ($userAvatar) 
+        if ($userAvatar != null) 
         {
             Storage::delete('public/'.$userAvatar);
         }

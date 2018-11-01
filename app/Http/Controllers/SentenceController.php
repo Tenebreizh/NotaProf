@@ -12,7 +12,7 @@ class SentenceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class SentenceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -33,7 +33,7 @@ class SentenceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -49,25 +49,14 @@ class SentenceController extends Controller
         ]);
 
         flash('Votre phrase a été créée avec succès !')->success();
-        return redirect()->route('sentences.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sentence $sentence)
-    {
-        //
+        return redirect()->back();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit(Sentence $sentence)
     {
@@ -79,7 +68,7 @@ class SentenceController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Sentence $sentence)
     {
@@ -93,7 +82,7 @@ class SentenceController extends Controller
         $sentence->save();
 
         flash('Votre phrase à été mise à jour !')->success();
-        return redirect()->route('sentences.index');
+        return redirect()->back();
 
     }
 
@@ -101,7 +90,7 @@ class SentenceController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Sentence $sentence)
     {

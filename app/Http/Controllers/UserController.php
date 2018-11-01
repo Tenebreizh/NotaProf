@@ -9,15 +9,11 @@ use App\Http\Controllers\Other\GeneratePassword;
 
 class UserController extends Controller
 {   
-    public function __construct()
-    {
-        $this->generate_password = new GeneratePassword(8);
-    }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -28,12 +24,12 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $password = $this->generate_password->password();
+        $password = GeneratePassword::password(8);
         
         $user = User::create([
             'name' => $request->name,
@@ -45,26 +41,15 @@ class UserController extends Controller
         $user->notify(new NewAccount($user->email, $password));
 
         flash("L'utilisateur a été créé avec succès !")->success();
-        return redirect()->route('users.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\User $user
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, User $user)
     {
@@ -72,14 +57,14 @@ class UserController extends Controller
         $user->save();
 
         flash("L'utilisateur a été modifié avec succès !")->success();
-        return redirect()->route('users.index');
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
     {
