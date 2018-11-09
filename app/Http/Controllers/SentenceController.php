@@ -60,7 +60,9 @@ class SentenceController extends Controller
      */
     public function edit(Sentence $sentence)
     {
-        return view('sentences.edit')->with('categories', Category::all())->with('sentence', $sentence);
+        return view('sentences.edit')
+                ->with('categories', Category::all())
+                ->with('sentence', $sentence);
     }
 
     /**
@@ -83,7 +85,6 @@ class SentenceController extends Controller
 
         flash('Votre phrase à été mise à jour !')->success();
         return redirect()->back();
-
     }
 
     /**

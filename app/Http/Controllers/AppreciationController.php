@@ -22,7 +22,6 @@ class AppreciationController extends Controller
 
         foreach ($data as $category) 
         {
-
             // Create a category
             $new_cat = Category::create([
                 'name' => $category['name'],

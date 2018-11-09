@@ -62,6 +62,7 @@ class ParameterController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
+        // If validation fail
         if ($validator->fails()) 
         {
             flash("Une erreur s'est produite...")->error();

@@ -9,7 +9,6 @@ use App\Http\Controllers\Other\GeneratePassword;
 
 class UserController extends Controller
 {   
-
     /**
      * Display a listing of the resource.
      *

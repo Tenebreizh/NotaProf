@@ -19,5 +19,4 @@ class Appreciation extends Model
     {
         return $this->belongsTo('App\Category');
     }
-
 }
