@@ -12,10 +12,11 @@
 */
 
 $factory->define(App\Appreciation::class, function (Faker\Generator $faker) {
-    $levels = array('-', '+', '=');
+    $levels = ['-', '+', '='];
+
     return [
-        'content' => $faker->sentence(6),
-        'level' => $levels[rand(0,2)],
-        'category_id' => rand(1,4),
+        'content'     => $faker->sentence(6),
+        'level'       => $levels[rand(0, 2)],
+        'category_id' => rand(1, 4),
     ];
 });

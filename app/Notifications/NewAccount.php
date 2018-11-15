@@ -3,23 +3,23 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class NewAccount extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
-     * User's email
+     * User's email.
      *
      * @var string
      */
     private $email;
 
     /**
-     * Users's password
+     * Users's password.
      *
      * @var string
      */
@@ -39,7 +39,8 @@ class NewAccount extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return array
      */
     public function via($notifiable)
@@ -50,26 +51,28 @@ class NewAccount extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->subject('Votre compte Notaprof !')
                     ->greeting('Bienvenue,')
                     ->line("Votre compte Notaprof vient d'être créée !")
-                    ->line("Vous trouverez ci-dessous les informations de connexion pour votre compte:")
-                    ->line('Identifiant: '. $this->email)
-                    ->line('Mot de passe (temporaire): '. $this->password)
+                    ->line('Vous trouverez ci-dessous les informations de connexion pour votre compte:')
+                    ->line('Identifiant: '.$this->email)
+                    ->line('Mot de passe (temporaire): '.$this->password)
                     ->action('Me connecter', route('login'))
-                    ->line("À vos notes, prêt, partez !");
+                    ->line('À vos notes, prêt, partez !');
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return array
      */
     public function toArray($notifiable)

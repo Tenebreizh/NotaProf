@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Notifications\NewAccount;
 use App\Http\Controllers\Other\GeneratePassword;
+use App\Notifications\NewAccount;
+use App\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
-{   
+{
     /**
      * Display a listing of the resource.
      *
@@ -23,16 +23,17 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $password = GeneratePassword::password(8);
-        
+
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name'     => $request->name,
+            'email'    => $request->email,
             'password' => bcrypt($password),
         ]);
 
@@ -40,14 +41,16 @@ class UserController extends Controller
         $user->notify(new NewAccount($user->email, $password));
 
         flash("L'utilisateur a été créé avec succès !")->success();
+
         return redirect()->back();
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\User $user
+     * @param \Illuminate\Http\Request $request
+     * @param \App\User                $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, User $user)
@@ -56,13 +59,15 @@ class UserController extends Controller
         $user->save();
 
         flash("L'utilisateur a été modifié avec succès !")->success();
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param \App\User $user
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
@@ -70,6 +75,7 @@ class UserController extends Controller
         $user->delete();
 
         flash("L'utilisateur a été supprimé avec succès !")->success();
+
         return redirect()->back();
     }
 }

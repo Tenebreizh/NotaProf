@@ -2,10 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
@@ -37,10 +35,10 @@ class User extends Authenticatable
 
     public static function admin_exist()
     {
-        if (DB::table('users')->where('admin', 1)->exists()) 
-        {
+        if (DB::table('users')->where('admin', 1)->exists()) {
             return true;
         }
+
         return false;
     }
 }
