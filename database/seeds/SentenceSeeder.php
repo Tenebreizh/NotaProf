@@ -11,6 +11,6 @@ class SentenceSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Sentence',10)->create();
+        factory('App\Sentence', 10)->create();
     }
 }

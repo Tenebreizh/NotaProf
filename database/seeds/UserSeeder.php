@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\User;
 use Faker\Generator as Faker;
-
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
@@ -16,22 +15,22 @@ class UserSeeder extends Seeder
     {
         // User
         User::create([
-            'name' => $faker->name,
-            'email' => 'test@test.com',
+            'name'              => $faker->name,
+            'email'             => 'test@test.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-            'remember_token' => str_random(10),
-            'admin' => 0,
+            'password'          => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+            'remember_token'    => str_random(10),
+            'admin'             => 0,
         ]);
 
         // Admin
         User::create([
-            'name' => $faker->name,
-            'email' => 'admin@test.com',
+            'name'              => $faker->name,
+            'email'             => 'admin@test.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-            'remember_token' => str_random(10),
-            'admin' => 1,
+            'password'          => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+            'remember_token'    => str_random(10),
+            'admin'             => 1,
         ]);
     }
 }

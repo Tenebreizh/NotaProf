@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Sentence;
 use App\Category;
-use Illuminate\Http\Request;
+use App\Sentence;
 use Auth;
+use Illuminate\Http\Request;
 
 class SentenceController extends Controller
 {
@@ -32,30 +32,33 @@ class SentenceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'content' => 'required'
+            'name'    => 'required|string|max:255',
+            'content' => 'required',
         ]);
 
         $sentence = Sentence::create([
-            'name' => $request->name,
+            'name'    => $request->name,
             'content' => $request->content,
             'user_id' => Auth::id(),
         ]);
 
         flash('Votre phrase a été créée avec succès !')->success();
+
         return redirect()->back();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sentence  $sentence
+     * @param \App\Sentence $sentence
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Sentence $sentence)
@@ -68,15 +71,16 @@ class SentenceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sentence  $sentence
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Sentence            $sentence
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Sentence $sentence)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'content' => 'required'
+            'name'    => 'required|string|max:255',
+            'content' => 'required',
         ]);
 
         $sentence->name = $request->name;
@@ -84,13 +88,15 @@ class SentenceController extends Controller
         $sentence->save();
 
         flash('Votre phrase à été mise à jour !')->success();
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sentence  $sentence
+     * @param \App\Sentence $sentence
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Sentence $sentence)
@@ -98,6 +104,7 @@ class SentenceController extends Controller
         $sentence->delete();
 
         flash('La phrase a été supprimé avec succès !')->success();
+
         return redirect()->back();
     }
 }
