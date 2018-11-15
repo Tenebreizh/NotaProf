@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Laravel\Telescope\Telescope;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
+use Laravel\Telescope\Telescope;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
-use App\User;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
@@ -42,7 +42,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         Gate::define('viewTelescope', function ($user) {
             return in_array($user->email, [
-                User::where('admin', 1)->first()->email // Only authorize the first admin to access telescope in non-local env
+                User::where('admin', 1)->first()->email, // Only authorize the first admin to access telescope in non-local env
             ]);
         });
     }

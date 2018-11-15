@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Http\Controllers\AppreciationController;
+use Illuminate\Console\Command;
 
 class StoreAppreciation extends Command
 {
@@ -38,13 +38,12 @@ class StoreAppreciation extends Command
      */
     public function handle()
     {
-        if ($this->option('reset')) 
-        {
+        if ($this->option('reset')) {
             $this->call('migrate:fresh');
         }
-        
-        AppreciationController::storeAppreciations() ;
-        
+
+        AppreciationController::storeAppreciations();
+
         $this->info('Appreciations successfully stored !');
     }
 }
