@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Tenebreizh/Notaprof.svg?branch=master)](https://travis-ci.org/Tenebreizh/Notaprof)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/412cd3137a9f42ffb4b9ae73d44f7878)](https://www.codacy.com/app/thibaud29/Notaprof?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Tenebreizh/Notaprof&amp;utm_campaign=Badge_Grade)
-[![StyleCI](https://github.styleci.io/repos/152876607/shield?branch=master)](https://github.styleci.io/repos/152876607)
+[![StyleCI](https://github.styleci.io/repos/152876607/shield?style=plastic&branch=master)](https://github.styleci.io/repos/152876607)
 
 Notaprof is a simple web app used by teacher to ease their appreciations making for the students at the end of a trimestrial.
