@@ -12,11 +12,11 @@ class Sentence extends Model
      * @var array
      */
     protected $fillable = [
-        'name','content', 'user_id',
+        'name', 'content', 'user_id',
     ];
 
     public function user()
     {
-       return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
 use Auth;
+use Illuminate\Http\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class ParameterController extends Controller
 {
     /**
-     * Return paramaters page of the current user
+     * Return paramaters page of the current user.
      *
      * @return \Illuminate\View\View
      */
@@ -21,16 +21,17 @@ class ParameterController extends Controller
     }
 
     /**
-     * Update the user profile
+     * Update the user profile.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
         $request->validate([
             'avatar' => 'image|mimes:jpeg,bmp,png,gif',
-            'name' => 'required|string|max:255',
+            'name'   => 'required|string|max:255',
         ]);
 
         $user = Auth::user();
@@ -43,13 +44,15 @@ class ParameterController extends Controller
         $user->save();
 
         flash('Votre compte à bien été mis à jour !')->success();
+
         return redirect()->back();
     }
 
     /**
-     * Update the user password
+     * Update the user password.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function updatePassword(Request $request)
@@ -59,13 +62,13 @@ class ParameterController extends Controller
 
         // Validation
         $validator = Validator::make($request->all(), [
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
         ]);
 
         // If validation fail
-        if ($validator->fails()) 
-        {
+        if ($validator->fails()) {
             flash("Une erreur s'est produite...")->error();
+
             return redirect()->back()
                              ->withErrors($validator)
                              ->withInput();
@@ -77,25 +80,26 @@ class ParameterController extends Controller
 
         // Return with success message
         flash('Votre mot de passe à bien été mis à jour !')->success();
+
         return redirect()->back();
     }
 
     /**
-     * Check if an avatar for this user already exist(Delete it if true) & upload the user avatar
+     * Check if an avatar for this user already exist(Delete it if true) & upload the user avatar.
      *
      * @param \App\User $userAvatar
      * @param file      $newAvatar
-     * @return string   $path
+     *
+     * @return string $path
      */
     private function userAvatar($userAvatar, $newAvatar)
     {
-        if ($userAvatar != null) 
-        {
+        if ($userAvatar != null) {
             Storage::delete('public/'.$userAvatar);
         }
 
         $path = str_replace('public/', 'storage/', Storage::putFile('public/avatars', new File($newAvatar)));
-        
+
         return $path;
     }
 }

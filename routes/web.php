@@ -14,13 +14,12 @@
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     Route::resource('/sentences', 'SentenceController');
-    
+
     Route::get('/parameters', 'ParameterController@index')->name('parameters');
     Route::put('/parameters', 'ParameterController@update')->name('parameters.update');
     Route::put('/parameters/password', 'ParameterController@updatePassword')->name('parameters.password');
-
 
     // Admin
     Route::resource('/users', 'UserController')->middleware('admin');
@@ -28,4 +27,3 @@ Route::middleware(['auth'])->group(function() {
 });
 
 Route::fallback('HomeController@index')->name('fallback');
-

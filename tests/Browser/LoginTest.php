@@ -2,11 +2,10 @@
 
 namespace Tests\Browser;
 
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-
 use App\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
 {
@@ -24,9 +23,9 @@ class LoginTest extends DuskTestCase
                     ->assertSee('Notaprof');
         });
     }
-    
+
     /**
-     * Test to verify if a register user can connect himself
+     * Test to verify if a register user can connect himself.
      *
      * @return void
      */
@@ -34,7 +33,7 @@ class LoginTest extends DuskTestCase
     {
         $user = factory(User::class)->create([
             'email' => 'johndoe@notaprof.com',
-        ]);      
+        ]);
 
         $this->browse(function ($browser) use ($user) {
             $browser->visit('/login')
@@ -43,6 +42,5 @@ class LoginTest extends DuskTestCase
                     ->press('Connexion')
                     ->assertPathIs('/');
         });
-
     }
 }

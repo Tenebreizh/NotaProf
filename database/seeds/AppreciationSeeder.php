@@ -11,6 +11,6 @@ class AppreciationSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Appreciation',12)->create();
+        factory('App\Appreciation', 12)->create();
     }
 }

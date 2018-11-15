@@ -19,7 +19,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 
+        'name',
     ];
 
     public function appreciations()

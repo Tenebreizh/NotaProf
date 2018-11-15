@@ -17,9 +17,8 @@ class DatabaseSeeder extends Seeder
         // Create fake categories
         // Create fake appreciations
         Artisan::call('appreciation:store');
-        
+
         // Create fake sentences
         $this->call('SentenceSeeder');
-        
     }
 }
