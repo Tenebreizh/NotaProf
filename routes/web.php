@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
     // Admin
     Route::resource('/users', 'UserController')->middleware('admin');
     Route::resource('/admins', 'AdminController')->middleware('admin');
+
+    Route::get('/administration', 'AdministrationController@index')->name('administration.index');
 });
 
 Route::fallback('HomeController@index')->name('fallback');

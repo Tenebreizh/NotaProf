@@ -27,6 +27,13 @@
                 </li>
 
                 <li>
+                    <a href=" {{ route('administration.index') }} ">
+                        <i class="fas fa-cogs"></i>
+                        <span> Admnistration </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href=" {{ route('users.index') }} ">
                         <i class="fas fa-users"></i>
                         <span> Utilisateurs </span>
