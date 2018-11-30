@@ -30,6 +30,7 @@ class AppreciationController extends Controller
                     'level'       => $appreciation['level'],
                     'content'     => $appreciation['content'],
                     'category_id' => $new_cat->id,
+                    'protected'      => true,
                 ]);
             }
         }
