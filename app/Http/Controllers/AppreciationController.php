@@ -21,7 +21,8 @@ class AppreciationController extends Controller
         foreach ($data as $category) {
             // Create a category
             $new_cat = Category::create([
-                'name' => $category['name'],
+                'name'      => $category['name'],
+                'protected' => true,
             ]);
 
             foreach ($category['appreciations'] as $appreciation) {
@@ -30,7 +31,7 @@ class AppreciationController extends Controller
                     'level'       => $appreciation['level'],
                     'content'     => $appreciation['content'],
                     'category_id' => $new_cat->id,
-                    'protected'      => true,
+                    'protected'   => true,
                 ]);
             }
         }
