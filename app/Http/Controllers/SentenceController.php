@@ -51,7 +51,7 @@ class SentenceController extends Controller
 
         flash('Votre phrase a été créée avec succès !')->success();
 
-        return redirect()->back();
+        return redirect()->route('sentences.index');
     }
 
     /**
@@ -89,7 +89,7 @@ class SentenceController extends Controller
 
         flash('Votre phrase à été mise à jour !')->success();
 
-        return redirect()->back();
+        return redirect()->route('sentences.index');
     }
 
     /**
@@ -105,6 +105,6 @@ class SentenceController extends Controller
 
         flash('La phrase a été supprimé avec succès !')->success();
 
-        return redirect()->back();
+        return redirect()->route('sentences.index');
     }
 }
