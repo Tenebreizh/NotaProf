@@ -7,14 +7,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Administrateurs</h3>
+            @box(['color'=> 'primary', 'title' => 'Gestion des appreciations'])
+                @slot('title')
+                    Administrateurs
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
                         <i class="fa fa-plus"></i> Ajouter un admin
                     </button>
-                </div>
-                <div class="box-body">
+                @endslot
+                @slot('content')
                     <div class="row">
                         <div class="col-lg-12">
                             <table class="table table-striped table-hover" id="admins">
@@ -41,6 +41,7 @@
                                                     </button>
 
                                                     {{-- Submit button for delete --}}
+                                                    {{-- If first, it's obviously the super-admin, we can't delete these guy xD --}}
                                                     @if (!$loop->first)
                                                         <button class="btn btn-danger"> 
                                                             <i class="fa fa-trash-alt"></i>    
@@ -54,8 +55,8 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endslot
+            @endbox
         </div>
     </div>
 

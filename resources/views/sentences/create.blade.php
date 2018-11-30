@@ -7,11 +7,8 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Créer votre phrase personnalisé</h3>
-                </div>
-                <div class="box-body">
+            @box(['color'=> 'primary', 'title' => 'Créer votre phrase personnalisé'])
+                @slot('content')
                     @include('appreciations')
     
                     <br />
@@ -37,8 +34,8 @@
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
+                @endslot
+            @endbox
         </div>
     </div>
 @endsection

@@ -7,12 +7,8 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Paramètres</h3>
-                </div>
-
-                <div class="box-body">    
+            @box(['color'=> 'primary', 'title' => 'Paramètres'])
+                @slot('content')
                     <div class="row">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
@@ -56,16 +52,6 @@
                                                 <input type="email" name="email" id="email" class="form-control" value=" {{ $user->email }} " disabled>
                                             </div>
                                     
-                                            {{--
-                                            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                                                <label for="name">Mot de passe:</label>
-                                                <input type="password" name="password" id="password" class="form-control" required> @if ($errors->has('password'))
-                                                <span class="help-block" role="alert">
-                                                                                <strong>{{ $errors->first('password') }}</strong>
-                                                                            </span> @endif
-                                            </div>
-                                            --}}
-                                    
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-success"> Enregistrer </button>
                                             </div>
@@ -103,8 +89,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endslot
+            @endbox
         </div>
     </div>
 @endsection

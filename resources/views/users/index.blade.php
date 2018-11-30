@@ -7,14 +7,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Utilisateurs</h3>
+            @box(['color'=> 'primary'])
+                @slot('title')
+                    Utilisateurs
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
                         <i class="fa fa-plus"></i> Ajouter un utilisateur
                     </button>
-                </div>
-                <div class="box-body">
+                @endslot
+                @slot('content')
                     <div class="row">
                         <div class="col-lg-12">
                             <table class="table table-striped table-hover" id="users">
@@ -52,8 +52,8 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endslot
+            @endbox
         </div>
     </div>
 

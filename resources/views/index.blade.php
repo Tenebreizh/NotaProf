@@ -7,12 +7,8 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Notaprof</h3>
-                </div>
-
-                <div class="box-body">
+            @box(['color'=> 'primary', 'title' => 'Notaprof'])
+                @slot('content')
                     @include('appreciations')
 
                     <hr />
@@ -32,9 +28,8 @@
                             </button>
                         </div>
                     </div>
-
-                </div>
-            </div>
+                @endslot
+            @endbox
         </div>
     </div>
 @endsection
