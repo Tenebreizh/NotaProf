@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Appreciation;
-use Illuminate\Http\Request;
-use App\Http\Controllers\AppreciationController;
+use App\Category;
 
 class AdministrationController extends Controller
 {
