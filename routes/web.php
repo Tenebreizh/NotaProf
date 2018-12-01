@@ -26,6 +26,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/admins', 'AdminController')->middleware('admin');
 
     Route::get('/administration', 'AdministrationController@index')->name('administration.index');
+
+    // Appreciations admin
+    Route::get('/administration/resetAppreciations', 'AppreciationController@reset')->name('appreciations.reset');
+    Route::put('/appreciations/{appreciation}', 'AppreciationController@update')->name('appreciations.update');
+    Route::delete('/appreciations/{appreciation}', 'AppreciationController@destroy')->name('appreciations.destroy');
 });
 
 Route::fallback('HomeController@index')->name('fallback');
