@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Appreciation;
+use App\Category;
 use Illuminate\Http\Request;
 
 class AppreciationController extends Controller
@@ -41,7 +41,7 @@ class AppreciationController extends Controller
     public static function reset()
     {
         $appreciations = Appreciation::all()->where('protected', true);
-        $categories    = Category::all()->where('protected', true);
+        $categories = Category::all()->where('protected', true);
 
         // Delete all system base appreciations
         foreach ($appreciations as $appreciation) {
@@ -58,6 +58,7 @@ class AppreciationController extends Controller
 
         // Return back with flash message
         flash('Les appréciations ont bien été réinitialisées !')->success();
+
         return redirect()->back();
     }
 
@@ -73,6 +74,7 @@ class AppreciationController extends Controller
 
         // Return back with flash message
         flash("L'appréciation a bien été mise à jour !")->success();
+
         return redirect()->back();
     }
 
@@ -83,6 +85,7 @@ class AppreciationController extends Controller
 
         // Return back with flash message
         flash("L'appréciation a bien été supprimée !")->success();
+
         return redirect()->back();
     }
 }
