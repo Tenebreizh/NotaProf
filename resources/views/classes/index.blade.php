@@ -23,16 +23,16 @@
                                     <th></th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($classes as $classe)
+                                    @foreach ($classes as $class)
                                         <tr>
-                                            <td> {{ $classe->name }} </td>
+                                            <td> {{ $class->name }} </td>
                                             <td class="text-center">
-                                                <form action="{{-- {{ route('users.destroy', ['id' => $user->id]) }} --}}" method="post">
+                                                <form action="{{ route('classes.destroy', ['class' => $class->id]) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     {{-- Go to edit page --}}
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $classe->id }}">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $class->id }}">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
 

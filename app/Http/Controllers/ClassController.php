@@ -25,4 +25,12 @@ class ClassController extends Controller
         flash('Votre classe à bien été ajouté !')->success();
         return redirect()->back();
     }
+
+    public function destroy(Classes $class)
+    {
+        $class->delete();
+
+        flash('Votre classe à bien été supprimée !')->success();
+        return redirect()->back();
+    }
 }
