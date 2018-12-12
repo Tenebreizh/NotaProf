@@ -26,6 +26,15 @@ class ClassController extends Controller
         return redirect()->back();
     }
 
+    public function update(Request $request, Classes $class)
+    {
+        $class->name = $request->name;
+        $class->save();
+
+        flash('Votre classe à bien été mise à jour !')->success();
+        return redirect()->back();
+    }
+
     public function destroy(Classes $class)
     {
         $class->delete();

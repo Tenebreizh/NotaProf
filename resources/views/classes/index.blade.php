@@ -55,6 +55,7 @@
 @endsection
 
 @include('classes.create')
+@include('classes.edit')
 
 @section('script')
     <script>
