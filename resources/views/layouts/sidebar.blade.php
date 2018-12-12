@@ -20,6 +20,13 @@
                 </a>
             </li>
 
+            <li>
+                <a href=" {{ route('classes.index') }} ">
+                    <i class="fas fa-users"></i>
+                    <span> Vos classes </span>
+                </a>
+            </li>
+
             @if (Auth::user()->admin)
                 <li class="header">
                     <i class="fas fa-gears"></i>
