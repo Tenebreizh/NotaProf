@@ -16,5 +16,13 @@ class ClassController extends Controller
         ]);
     }
 
-    
+    public function store(Request $request)
+    {
+        $classe = new Classes();
+        $classe->name = $request->name;
+        $classe->save();
+
+        flash('Votre classe à bien été ajouté !')->success();
+        return redirect()->back();
+    }
 }
