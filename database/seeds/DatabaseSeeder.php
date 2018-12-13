@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
 
         // Create fake sentences
         $this->call('SentenceSeeder');
+
+        // Create fake classes
+        $this->call('ClassSeeder');
     }
 }
