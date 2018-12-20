@@ -2,16 +2,16 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Appreciation;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
 class AppreciationTest extends TestCase
 {
     use DatabaseTransactions;
 
     /**
-     * Test the update of an appreciation
+     * Test the update of an appreciation.
      *
      * @return void
      */
@@ -27,8 +27,8 @@ class AppreciationTest extends TestCase
         ]);
 
         // Update fields
-        $appreciation->content = "New content";
-        $appreciation->level = "+";
+        $appreciation->content = 'New content';
+        $appreciation->level = '+';
         $appreciation->category_id = $category2->id;
 
         // Save to database
@@ -43,7 +43,7 @@ class AppreciationTest extends TestCase
     }
 
     /**
-     * Test the delete of an appreciation
+     * Test the delete of an appreciation.
      *
      * @return void
      */
@@ -67,6 +67,4 @@ class AppreciationTest extends TestCase
             'category_id' => $category->id,
         ]);
     }
-
-
 }
